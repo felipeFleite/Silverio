@@ -1,13 +1,13 @@
 const express = require('express');
 const { Client } = require('pg');
-const path = require('path');
+const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
-// Serve static files for HTML, CSS, and JS
-app.use(express.static(path.join(__dirname)));
+// Habilitar CORS para permitir requisições do React
+app.use(cors());
 
-// Set up PostgreSQL client
+// Configurar o cliente PostgreSQL
 const client = new Client({
     host: "localhost",
     user: "postgres",
@@ -18,18 +18,18 @@ const client = new Client({
 
 client.connect();
 
-// Route to fetch data
+// Rota para buscar dados
 app.get('/alunos', async (req, res) => {
     try {
         const result = await client.query(`SELECT * FROM public.alunos`);
-        res.json(result.rows);  // Send data as JSON
+        res.json(result.rows);  // Enviar os dados como JSON
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Error retrieving data");
+        res.status(500).send("Erro ao recuperar dados");
     }
 });
 
-// Start the server
+// Iniciar o servidor
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
