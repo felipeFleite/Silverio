@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './AlunosTable.css';
+import './style.css';
 
-const AlunosTable = () => {
+const PessoasTabela = () => {
     const [alunos, setAlunos] = useState([]);
     const [columns, setColumns] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/alunos')
+        fetch('http://localhost:3000/')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao buscar dados');
@@ -25,7 +25,7 @@ const AlunosTable = () => {
 
     return (
         <div>
-            <h1>Alunos</h1>
+            <h1>Pessoas</h1>
             <table className="alunos-table">
                 <thead>
                     <tr>
@@ -48,4 +48,4 @@ const AlunosTable = () => {
     );
 };
 
-export default AlunosTable;
+export default PessoasTabela;

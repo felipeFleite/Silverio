@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "node.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.jsx"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,13 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
 }
